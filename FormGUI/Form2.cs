@@ -12,9 +12,10 @@ namespace FormGUI
 {
     public partial class Form2 : Form
     {
-        public Form2()
+        public Form2(string textFromForm1)
         {
             InitializeComponent();
+            label2.Text += textFromForm1;
         }
     }
 }

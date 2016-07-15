@@ -67,6 +67,11 @@ namespace FormGUI
         //code for formatting is located in 'Form1.Designer.cs' file.
         private void button1_Click(object sender, EventArgs e)
         {
+           
+
+
+
+
             ////displays today's date
             //DateTime today = DateTime.Now; 
             //MessageBox.Show(today.ToString());
@@ -83,10 +88,29 @@ namespace FormGUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form2 f = new Form2();
+            Form2 f = new Form2(maskedTextBox1.Text);
             //f.Show(); //can switch b/w 2 windows
             f.ShowDialog(); //2nd window becomes a dialogue box & cannot switch to Form1 till u close Form2.
 
+        }
+
+
+        //hide Form1 & display icon in sys tray & a balloonTip window with a message
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide(); //hides form1 & icon shown in sys Tray.
+            notifyIcon1.ShowBalloonTip(2000, "Still Running", "icon in system Tray", ToolTipIcon.Info);
+        }
+
+        //click NotifyIcon1 & click Bolt sign for events>>doubleclich in empty box aft MouseDoubleClick>>this event is created. type this.show. In systen tray, click icon to bring up the Form1 to foreground
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
+        }
+        //single click also display Form1
+        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
         }
     }
 }
