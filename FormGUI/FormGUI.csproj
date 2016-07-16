@@ -83,12 +83,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\MCsquare.rtf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Penguins.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Chrysanthemum.jpg" />

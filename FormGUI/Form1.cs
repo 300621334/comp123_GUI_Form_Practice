@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.IO;
 namespace FormGUI
 {
     public partial class Form1 : Form
@@ -111,6 +111,65 @@ namespace FormGUI
         private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
         {
             this.Show();
+        }
+        
+        //button starts timer, & every tick of timer maked progressBar increment at speed 100=interval on timer1 properties
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.progressBar1.Increment(1);
+        }
+        //RichTextBox: save RTF file in wordPad & drop in project>properties>resources>file. Then code as below.
+        private void button5_Click(object sender, EventArgs e)
+        {
+            richTextBox1.SelectedRtf = Properties.Resources.MCsquare;
+        }
+        
+        
+        //.ico icon files from here: http://www.iconarchive.com/search?q=zoom
+        private void exitFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //this.Close(); //exits app
+            Application.Exit(); //does same thing
+            
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("All rights reserved", "Help", MessageBoxButtons.OKCancel);
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Text = "";
+            //richTextBox1.Clear();
+        }
+
+        private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Stream myStream; //unnecessary! also not needed inside if statement.
+            OpenFileDialog openFileDialogue1 = new OpenFileDialog();
+            if (openFileDialogue1.ShowDialog() == DialogResult.OK)
+            {
+                if ((myStream=openFileDialogue1.OpenFile()) != null)
+                {
+                    string pathToFile = openFileDialogue1.FileName;
+                    string textInFile = File.ReadAllText(pathToFile);
+                    richTextBox1.Text = textInFile;
+                }
+            }
+
+
+            //OpenFileDialog openFileDialogue1 = new OpenFileDialog();
+            //if(openFileDialogue1.ShowDialog() == DialogResult.OK)
+            //{
+            //    string pathToFile = openFileDialogue1.FileName;
+            //    //MessageBox.Show(pathToFile);
+            //}
         }
     }
 }
